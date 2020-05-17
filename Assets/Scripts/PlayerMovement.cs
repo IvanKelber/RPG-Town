@@ -24,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
         velocity = Vector2.ClampMagnitude(velocity, speed) * Time.deltaTime;
         ApplyAnimation(velocity);
         controller.Move(velocity);
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            Interactable interactable = controller.CheckForInteractables();
+            if (interactable != null) {
+                interactable.OnInteraction();
+            }
+        }
     }
 
     void ApplyAnimation(Vector2 velocity) {

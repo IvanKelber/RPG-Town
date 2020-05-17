@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PlayerController : RaycastController
 {
 
-    // Update is called once per frame
+    private Vector2 facingDirection = Vector2.down;
+
+    [SerializeField]
+    private LayerMask interactableMask;
     public void Move(Vector2 moveAmount)
     {
         UpdateRaycastOrigins();
@@ -16,6 +19,22 @@ public class PlayerController : RaycastController
             VerticalCollisions(ref moveAmount);
         }
         transform.Translate(moveAmount);
+        float directionX = Math.Sign(moveAmount.x);
+        float directionY = Math.Sign(moveAmount.y);
+
+        if(directionX != 0 ) {
+            facingDirection = Vector2.right * directionX;
+        } else if (directionY != 0 ) {
+            facingDirection = Vector2.up * directionY;
+        } 
+        Color rayColor = Color.red;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, 1, interactableMask);
+
+        if(hit) {
+            rayColor = Color.green;
+        }
+        Debug.DrawRay(transform.position, facingDirection * 1, rayColor);
+
     }
 
      void HorizontalCollisions(ref Vector2 moveAmount)
@@ -64,5 +83,16 @@ public class PlayerController : RaycastController
                
             }
         }
+    }
+
+    public Interactable CheckForInteractables() {
+        Debug.Log("Checking for interactables");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, 1, interactableMask);
+
+        if(hit) {
+            return hit.transform.gameObject.GetComponent<Interactable>();
+        }
+        Debug.Log("Nothing found");
+        return null;
     }
 }
