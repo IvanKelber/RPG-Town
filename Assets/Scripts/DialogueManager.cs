@@ -16,7 +16,15 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue) {
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            DisplayNextSentence();
+        }
+    }
+
+    private Interactable.EndDialogueCallback cb;
+    public void StartDialogue(Dialogue dialogue, Interactable.EndDialogueCallback cb) {
+        this.cb = cb;
         gameObject.SetActive(true);
         this.speakerText.text = dialogue.speakerName;
         sentences.Clear();
@@ -28,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() {
         gameObject.SetActive(false);
+        cb();
     }
 
     public void DisplayNextSentence() {

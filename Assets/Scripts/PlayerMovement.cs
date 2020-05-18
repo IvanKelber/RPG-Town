@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     private PlayerController controller;
     private Animator animator;
+
+    private bool playerActionFrozen;
+
     void Start()
     {
         controller = GetComponent<PlayerController>();
@@ -18,17 +21,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector2 playerInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector2 velocity = playerInput * speed;
+        if(!playerActionFrozen) {
+            Vector2 playerInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Vector2 velocity = playerInput * speed;
 
-        velocity = Vector2.ClampMagnitude(velocity, speed) * Time.deltaTime;
-        ApplyAnimation(velocity);
-        controller.Move(velocity);
+            velocity = Vector2.ClampMagnitude(velocity, speed) * Time.deltaTime;
+            ApplyAnimation(velocity);
+            controller.Move(velocity);
 
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            Interactable interactable = controller.CheckForInteractables();
-            if (interactable != null) {
-                interactable.OnInteraction();
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                Interactable interactable = controller.CheckForInteractables();
+                if (interactable != null) {
+                    playerActionFrozen = interactable.OnInteraction(UnfreezePlayer);
+
+                }
             }
         }
     }
@@ -43,4 +49,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player Animator is not set");
         }
     }
+
+    public void UnfreezePlayer() {
+        playerActionFrozen = false;
+    }
+
 }

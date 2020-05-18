@@ -4,12 +4,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-  
-    public string Name;
+    public abstract bool OnInteraction(EndDialogueCallback cb);
 
-    public virtual void OnInteraction() {
-        Debug.Log("Interacting with " + Name);
-    }
-
-
+    public delegate void EndDialogueCallback();
 }

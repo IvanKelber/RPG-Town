@@ -11,9 +11,10 @@ public class DialogueInteractable : Interactable
     private DialogueManager dialogueManager;
 
 
-    public override void OnInteraction() {
-        base.OnInteraction();
-        dialogueManager.StartDialogue(dialogue);
-
+    public override bool OnInteraction(EndDialogueCallback cb) {
+        dialogueManager.StartDialogue(dialogue, cb);
+        return true; // return true since we will freeze player action while dialogue is open
     }
+
+
 }
