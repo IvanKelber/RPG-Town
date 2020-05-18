@@ -16,8 +16,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    [SerializeField]
+    private UserInput input;
+
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(input.ActionKey()) {
             DisplayNextSentence();
         }
     }
