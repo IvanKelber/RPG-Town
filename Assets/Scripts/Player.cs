@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float runSpeed = 6;
 
+    public KeyItem mask;
+
     private bool playerActionFrozen = false;
 
     void Awake()
@@ -43,6 +45,17 @@ public class Player : MonoBehaviour
             controller.Move(moveAmount);
             ApplyAnimation(moveAmount);
             playerActionFrozen = Interact(); //Checks for and interacts with interactables
+
+            if(Input.GetKeyDown(KeyCode.B)) {
+                inventory.PrintAllItems();
+            }
+
+            if(Input.GetKeyDown(KeyCode.T)) {
+                inventory.AddItem(mask);
+            }
+            if(Input.GetKeyDown(KeyCode.R)) {
+                inventory.RemoveItem(mask);
+            }
         }
     }
 
