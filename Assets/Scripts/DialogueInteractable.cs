@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueInteractable : Interactable
 {
     [SerializeField]
-    private Dialogue dialogue;
+    protected Dialogue dialogue;
 
     [SerializeField]
     private DialogueManager dialogueManager;
