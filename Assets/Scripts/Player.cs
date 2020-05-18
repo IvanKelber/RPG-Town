@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
     public KeyItem mask;
 
     private bool playerActionFrozen = false;
+    private bool inventoryOpen = false;
 
+    public InventoryDisplay inventoryDisplay;
     void Awake()
     {
         inventory = GetComponent<PlayerInventoryManager>();
@@ -46,16 +48,14 @@ public class Player : MonoBehaviour
             ApplyAnimation(moveAmount);
             playerActionFrozen = Interact(); //Checks for and interacts with interactables
 
-            if(Input.GetKeyDown(KeyCode.B)) {
-                inventory.PrintAllItems();
-            }
+            
 
-            if(Input.GetKeyDown(KeyCode.T)) {
-                inventory.AddItem(mask);
-            }
-            if(Input.GetKeyDown(KeyCode.R)) {
-                inventory.RemoveItem(mask);
-            }
+           
+        }
+
+        if(playerInput.InventoryKey()) {
+            inventoryOpen = !inventoryOpen;
+            inventoryDisplay.transform.gameObject.SetActive(inventoryOpen);
         }
     }
 

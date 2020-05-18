@@ -9,6 +9,7 @@ public class UserInput : ScriptableObject
 
     const KeyCode actionKey = KeyCode.Space;
     const KeyCode runKey = KeyCode.LeftShift;
+    const KeyCode inventoryKey = KeyCode.B;
 
     public Vector2 DirectionalInput() {
         return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -20,6 +21,10 @@ public class UserInput : ScriptableObject
 
     public bool RunKey() {
         return Input.GetKey(runKey);
+    }
+
+    public bool InventoryKey() {
+        return Input.GetKeyDown(inventoryKey);
     }
 
 

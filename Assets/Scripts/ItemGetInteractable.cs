@@ -10,7 +10,7 @@ public class ItemGetInteractable : DialogueInteractable
     [SerializeField]
     PlayerInventoryManager inventoryManager;
     public override bool OnInteraction(EndDialogueCallback cb) {
-        this.dialogue.sentences = new string[2] {"You found a " + item.Name + "!", item.Description};
+        this.dialogue.sentences[0] = "You found a " + item.Name + "!";
         inventoryManager.AddItem(item);
         Destroy(this);
         return base.OnInteraction(cb);

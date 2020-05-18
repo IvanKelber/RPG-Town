@@ -7,6 +7,10 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField]
     private ItemCollection inventory;
 
+    private void Awake() {
+        inventory.Clear();
+    }
+
     public void AddItem(BaseItem item) {
         Debug.Log("adding item: "  + item.Name);
         inventory.Add(item);
@@ -22,5 +26,9 @@ public class PlayerInventoryManager : MonoBehaviour
             s += item.Name + ",";
         }
         Debug.Log("Items in inventory: " + s);
+    }
+
+    public BaseItem GetItemByIndex(int index) {
+        return inventory[index];
     }
 }

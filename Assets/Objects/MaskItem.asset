@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Mask
   Description: A cloth mask that can be worn to ease the anxieties of strangers on
     the street.
+  sprite: {fileID: 21300000, guid: a66857dece5b44a52bdbd12ee08aeb9f, type: 3}
