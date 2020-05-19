@@ -5,7 +5,7 @@ using System;
 public class PlayerController : RaycastController
 {
 
-    private Vector2 facingDirection = Vector2.down;
+    public Vector2 facingDirection = Vector2.down;
 
     [SerializeField]
     private LayerMask interactableMask;

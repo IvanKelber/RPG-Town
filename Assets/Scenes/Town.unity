@@ -2116,6 +2116,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2131,6 +2132,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfdd9ac666934e458e78d5ccb55d0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1169419961}
+  outerBounds: {fileID: 1530346772}
+  focusAreaSize: {x: 4, y: 4}
+  lookAheadDstX: 1
+  lookAheadSmoothTimeX: 1
+  lookAheadDstY: 1
+  lookAheadSmoothTimeY: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3178,6 +3198,7 @@ GameObject:
   - component: {fileID: 977565831}
   - component: {fileID: 977565833}
   - component: {fileID: 977565832}
+  - component: {fileID: 977565834}
   m_Layer: 8
   m_Name: Buildings_Back_Walls_TileMap
   m_TagString: Untagged
@@ -3601,6 +3622,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &977565834
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977565830}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &999998741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,6 +3745,17 @@ MonoBehaviour:
   itemSprite: {fileID: 1595364665}
   itemName: {fileID: 1277763765}
   itemDescription: {fileID: 489734458}
+--- !u!114 &1169419961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4055526818313023045, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
+  m_PrefabInstance: {fileID: 4055526817678847358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0d20e81c8c54cc4a9bc3085a705b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1177740760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4661,6 +4709,7 @@ GameObject:
   - component: {fileID: 1530346769}
   - component: {fileID: 1530346771}
   - component: {fileID: 1530346770}
+  - component: {fileID: 1530346772}
   m_Layer: 0
   m_Name: Street_TileMap
   m_TagString: Untagged
@@ -9875,6 +9924,32 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!61 &1530346772
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530346768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 35, y: 16}
+  m_EdgeRadius: 0
 --- !u!1 &1545455030
 GameObject:
   m_ObjectHideFlags: 0
