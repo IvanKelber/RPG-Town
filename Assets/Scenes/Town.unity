@@ -2178,7 +2178,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3676,21 +3676,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169419959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 7f2249c0c16894527816e6bae9d404e5, type: 2}
+  _event: {fileID: 11400000, guid: 8ffa05e4cfca94eeab1e73ee0e29b571, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1169419960}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: UnfreezePlayer
-        m_Mode: 1
+        m_MethodName: FreezePlayer
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3699,6 +3699,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _debugValue: 0
 --- !u!1 &1177740760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4733,6 +4734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 568906084}
   dialogueText: {fileID: 613536039}
+  playerFrozenEvent: {fileID: 11400000, guid: 8ffa05e4cfca94eeab1e73ee0e29b571, type: 2}
   input: {fileID: 11400000, guid: cab1beb9ea8a546ceb53b4d233499a03, type: 2}
 --- !u!1 &1530346768
 GameObject:

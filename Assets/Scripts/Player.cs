@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UnfreezePlayer() {
-        playerActionFrozen = false;
+    public void FreezePlayer(bool freeze) {
+        playerActionFrozen = freeze;
     }
 }

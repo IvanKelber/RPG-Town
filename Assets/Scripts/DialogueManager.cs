@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     private TMP_Text dialogueText;
 
     [SerializeField]
-    private GameEvent playerUnfreezeEvent;
+    private BoolGameEvent playerFrozenEvent;
 
     private void Awake() {
         sentences = new Queue<string>();
@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() {
         gameObject.SetActive(false);
-        playerUnfreezeEvent.Raise();
+        playerFrozenEvent.Raise(false);
     }
 
     public void DisplayNextSentence() {
