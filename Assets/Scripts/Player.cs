@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         if(playerInput.ActionKey()) {
             Interactable interactable = controller.CheckForInteractables();
             if (interactable != null) {
-                return interactable.OnInteraction(UnfreezePlayer);
+                return interactable.OnInteraction();
             }
         }
         return false;

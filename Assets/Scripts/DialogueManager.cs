@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using ScriptableObjectArchitecture;
 public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
@@ -11,6 +12,9 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] 
     private TMP_Text dialogueText;
+
+    [SerializeField]
+    private GameEvent playerUnfreezeEvent;
 
     private void Awake() {
         sentences = new Queue<string>();
@@ -25,9 +29,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private Interactable.EndDialogueCallback cb;
-    public void StartDialogue(Dialogue dialogue, Interactable.EndDialogueCallback cb) {
-        this.cb = cb;
+    public void StartDialogue(Dialogue dialogue) {
         gameObject.SetActive(true);
         this.speakerText.text = dialogue.speakerName;
         sentences.Clear();
@@ -39,7 +41,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() {
         gameObject.SetActive(false);
-        cb();
+        playerUnfreezeEvent.Raise();
     }
 
     public void DisplayNextSentence() {

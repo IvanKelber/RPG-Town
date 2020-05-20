@@ -9,11 +9,11 @@ public class ItemGetInteractable : DialogueInteractable
     BaseItem item;
     [SerializeField]
     PlayerInventoryManager inventoryManager;
-    public override bool OnInteraction(EndDialogueCallback cb) {
+    public override bool OnInteraction() {
         this.dialogue.sentences[0] = "You found a " + item.Name + "!";
         inventoryManager.AddItem(item);
         Destroy(this);
-        return base.OnInteraction(cb);
+        return base.OnInteraction();
     }
 
 }

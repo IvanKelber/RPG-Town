@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public abstract bool OnInteraction(EndDialogueCallback cb);
+    public abstract bool OnInteraction();
 
-    public delegate void EndDialogueCallback();
 }

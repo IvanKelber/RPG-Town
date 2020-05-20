@@ -2946,7 +2946,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4055526818313023043, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
   m_PrefabInstance: {fileID: 4055526817678847358}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1169419959}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2a6be236193a4748a32503ff172ac11, type: 3}
@@ -3640,17 +3640,65 @@ MonoBehaviour:
   itemSprite: {fileID: 1595364665}
   itemName: {fileID: 1277763765}
   itemDescription: {fileID: 489734458}
+--- !u!1 &1169419959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4055526818313023048, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
+  m_PrefabInstance: {fileID: 4055526817678847358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1169419960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4055526818313023047, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
+  m_PrefabInstance: {fileID: 4055526817678847358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169419959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d9ce0c275d4410fa2e02eede409352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1169419961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4055526818313023045, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
   m_PrefabInstance: {fileID: 4055526817678847358}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1169419959}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a0d20e81c8c54cc4a9bc3085a705b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1169419962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169419959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 7f2249c0c16894527816e6bae9d404e5, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1169419960}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: UnfreezePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1177740760
 GameObject:
   m_ObjectHideFlags: 0
