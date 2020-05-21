@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4055526818313023044}
   - component: {fileID: 4055526818313023042}
   - component: {fileID: 4055526818313023045}
-  - component: {fileID: 4055526818313023043}
   - component: {fileID: 4055526818313023047}
+  - component: {fileID: 6384099492182086961}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -153,22 +153,10 @@ MonoBehaviour:
   verticalRayCount: 0
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
+  facingDirection: {x: 0, y: -1}
   interactableMask:
     serializedVersion: 2
     m_Bits: 1536
---- !u!114 &4055526818313023043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055526818313023048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a6be236193a4748a32503ff172ac11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}
 --- !u!114 &4055526818313023047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +170,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: cab1beb9ea8a546ceb53b4d233499a03, type: 2}
+  inventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}
   walkSpeed: 3
   runSpeed: 6
-  mask: {fileID: 11400000, guid: 4c09588f3add64ce3bfa7319e5c83059, type: 2}
+  toggleInventoryEvent: {fileID: 11400000, guid: ddb73f6b167ed48fc929164343dc2156, type: 2}
+--- !u!114 &6384099492182086961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055526818313023048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 8ffa05e4cfca94eeab1e73ee0e29b571, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4055526818313023047}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnFreezePlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
