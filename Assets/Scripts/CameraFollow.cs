@@ -92,7 +92,6 @@ public class CameraFollow : MonoBehaviour
 
         focusPosition.x = Mathf.Clamp(focusPosition.x, minX, maxX);
         focusPosition.y = Mathf.Clamp(focusPosition.y, minY, maxY);
-        Debug.Log("focusPosition: " + focusPosition);
         transform.position = (Vector3)focusPosition + Vector3.forward * -10;
     }
 

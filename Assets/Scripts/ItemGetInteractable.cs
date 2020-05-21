@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
-public class ItemGetInteractable : DialogueInteractable
+public class ItemGetInteractable : Interactable
 {
 
     [SerializeField]
     BaseItem item;
     [SerializeField]
-    PlayerInventoryManager inventoryManager;
-    public override bool OnInteraction() {
-        this.dialogue.sentences[0] = "You found a " + item.Name + "!";
-        inventoryManager.AddItem(item);
+    DialogueGameEvent startDialogueEvent;
+
+    [SerializeField]
+    BoolGameEvent freezePlayerEvent;
+
+    [SerializeField]
+    ItemCollection inventory;
+
+    public override void OnInteraction() {
+        inventory.Add(item);
         Destroy(this);
-        return base.OnInteraction();
+        startDialogueEvent.Raise(item.GetItemFoundDialogue());
+        freezePlayerEvent.Raise(true);
     }
 
 }

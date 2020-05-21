@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+using ScriptableObjectArchitecture;
+
 public class Player : MonoBehaviour
 {
 
@@ -10,28 +13,24 @@ public class Player : MonoBehaviour
     private UserInput playerInput;
 
     private PlayerController controller;
-    private PlayerInventoryManager inventory;
 
-    private Animator animator;
+    [SerializeField]
+    private ItemCollection inventory;
+
 
     [SerializeField]
     private float walkSpeed = 3;
-
     [SerializeField]
     private float runSpeed = 6;
 
-    public KeyItem mask;
+    [SerializeField]
+    private GameEvent toggleInventoryEvent;
 
     private bool playerActionFrozen = false;
-    private bool inventoryOpen = false;
 
-    public InventoryDisplay inventoryDisplay;
+    private Animator animator;
     void Awake()
     {
-        inventory = GetComponent<PlayerInventoryManager>();
-        if(inventory == null) {
-            Debug.LogError("Player Inventory Manager is missing");
-        }
         controller = GetComponent<PlayerController>();
         if(controller == null) {
             Debug.LogError("Player controller is missing");
@@ -46,27 +45,22 @@ public class Player : MonoBehaviour
             Vector2 moveAmount = GetMovement(Time.deltaTime);
             controller.Move(moveAmount);
             ApplyAnimation(moveAmount);
-            playerActionFrozen = Interact(); //Checks for and interacts with interactables
-
-            
-
-           
+            Interact(); //Checks for and interacts with interactables    
         }
 
         if(playerInput.InventoryKey()) {
-            inventoryOpen = !inventoryOpen;
-            inventoryDisplay.transform.gameObject.SetActive(inventoryOpen);
+            toggleInventoryEvent.Raise();
         }
     }
 
-    private bool Interact() {
+    private void Interact() {
         if(playerInput.ActionKey()) {
             Interactable interactable = controller.CheckForInteractables();
             if (interactable != null) {
-                return interactable.OnInteraction();
+                Debug.Log("Calling interactable");
+                interactable.OnInteraction();
             }
         }
-        return false;
     }
 
     private Vector2 GetMovement(float delta) {
@@ -85,7 +79,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void FreezePlayer(bool freeze) {
-        playerActionFrozen = freeze;
+    public void OnFreezePlayer(bool freeze) {
+        Debug.Log("OnFreezePlayer : " + freeze);
+        if(freeze) {
+            playerActionFrozen = freeze;
+
+        } else {
+            StopAllCoroutines();
+            StartCoroutine(UnfreezePlayer());
+        }
+    }
+
+    //Without this single frame delay it's possible to become unfrozen and refrozen in a single frame...
+    //TODO: Fix the need for this coroutine
+    IEnumerator UnfreezePlayer() {
+        yield return null;
+        playerActionFrozen = false;
     }
 }

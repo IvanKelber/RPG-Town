@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ScriptableObjectArchitecture;
 public class DialogueInteractable : Interactable
 {
     [SerializeField]
     protected Dialogue dialogue;
 
     [SerializeField]
-    private DialogueManager dialogueManager;
+    private DialogueGameEvent startDialogueEvent;
 
-    public override bool OnInteraction() {
-        dialogueManager.StartDialogue(dialogue);
-        return true; // return true since we will freeze player action while dialogue is open
+    [SerializeField]
+    private BoolGameEvent freezePlayerEvent;
+
+    public override void OnInteraction() {
+        startDialogueEvent.Raise(dialogue);
+        freezePlayerEvent.Raise(true);
     }
 
 

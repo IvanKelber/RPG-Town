@@ -16,21 +16,24 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private BoolGameEvent playerFrozenEvent;
 
-    private void Awake() {
-        sentences = new Queue<string>();
-    }
-
     [SerializeField]
     private UserInput input;
+    private CanvasGroup cg;
+    private bool activated = false;
+    private void Awake() {
+        sentences = new Queue<string>();
+        cg = GetComponent<CanvasGroup>();
+        OnDisplayDialogue(0f);
+    }
 
     private void Update() {
-        if(input.ActionKey()) {
+        if(activated && input.ActionKey()) {
             DisplayNextSentence();
         }
     }
 
     public void StartDialogue(Dialogue dialogue) {
-        gameObject.SetActive(true);
+        OnDisplayDialogue(1f);
         this.speakerText.text = dialogue.speakerName;
         sentences.Clear();
         foreach(string sentence in dialogue.sentences) {
@@ -40,7 +43,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue() {
-        gameObject.SetActive(false);
+        OnDisplayDialogue(0f);
         playerFrozenEvent.Raise(false);
     }
 
@@ -62,5 +65,10 @@ public class DialogueManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void OnDisplayDialogue(float alpha) {
+        cg.alpha = alpha;
+        activated = alpha > 0;
     }
 }
