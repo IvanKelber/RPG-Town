@@ -22,20 +22,35 @@ public class InventoryDisplay : MonoBehaviour
     TMP_Text itemDescription;
 
 
+    [SerializeField]
+    private GameObject itemSlotsParent;
+
+    private ItemSlot[] inventorySlots;
+
+
     private void Awake() {
         cg = GetComponent<CanvasGroup>();
-        inventory.Clear();
-    }
-
-    private void OnEnable() {
         OnToggleDisplay();
+        inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>();
+        Debug.Log("Inventory slots: " + inventorySlots);
+        inventory.Clear(); //While there is no saving of course
     }
 
+  
     private void Update() {
-        DisplayItem(inventory.Count > 0 ? inventory[0] : null);
+        // DisplayItem(inventory.Count > 0 ? inventory[0] : null);
     }
 
-    public void DisplayItem(BaseItem item) {
+    public void UpdateUI() {
+        for(int i = 0; i < inventorySlots.Length; i++) {
+            inventorySlots[i].RemoveItem();
+            if(i < inventory.Count) {
+                inventorySlots[i].AddItem(inventory.Get(i));
+            }
+        }
+    }
+
+    public void DisplaySelectedItem(BaseItem item) {
         if(item == null) {
             return;
         }
@@ -44,6 +59,9 @@ public class InventoryDisplay : MonoBehaviour
         itemImage.sprite = item.sprite;
     }
 
+    public void TEST() {
+        Debug.Log("TEST");
+    }
 
 
     public void OnToggleDisplay() {

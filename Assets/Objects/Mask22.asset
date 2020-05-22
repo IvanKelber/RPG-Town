@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4fe586b1f604413b8349d54e9681d67, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: b2310fdad107544e381d5f6220a435b2, type: 3}
+  m_Name: Mask22
   m_EditorClassIdentifier: 
-  capacity: 10
-  itemCollectionChanged: {fileID: 11400000, guid: 4ca7a87b251944783964c9938804a34e, type: 2}
+  Name: SecondMask
+  Description: this is a second mask and it's v. clean
+  FoundText: 
+  sprite: {fileID: 21300000, guid: c97d40e01391648da9bb413429e7cb55, type: 3}

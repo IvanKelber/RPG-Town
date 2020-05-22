@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     private bool playerActionFrozen = false;
 
     private Animator animator;
+
+    public BaseItem mask;
+    public BaseItem mask2;
     void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -50,6 +53,14 @@ public class Player : MonoBehaviour
 
         if(playerInput.InventoryKey()) {
             toggleInventoryEvent.Raise();
+        }
+
+        if(Input.GetKeyDown(KeyCode.T)) {
+            inventory.Add(mask);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R)) {
+            inventory.Add(mask2);
         }
     }
 

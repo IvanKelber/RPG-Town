@@ -174,6 +174,7 @@ MonoBehaviour:
   walkSpeed: 3
   runSpeed: 6
   toggleInventoryEvent: {fileID: 11400000, guid: ddb73f6b167ed48fc929164343dc2156, type: 2}
+  mask: {fileID: 11400000, guid: 4c09588f3add64ce3bfa7319e5c83059, type: 2}
 --- !u!114 &6384099492182086961
 MonoBehaviour:
   m_ObjectHideFlags: 0
