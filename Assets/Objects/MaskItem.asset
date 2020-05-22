@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2310fdad107544e381d5f6220a435b2, type: 3}
   m_Name: MaskItem
   m_EditorClassIdentifier: 
-  Name: Mask
-  Description: A cloth mask that can be worn to ease the anxieties of strangers on
-    the street.
+  Name: Dirty Mask
+  Description: A cloth mask that has been moonlighting as a bed for a family of raccoons.
+  FoundText: Hope those are food stains...
   sprite: {fileID: 21300000, guid: a66857dece5b44a52bdbd12ee08aeb9f, type: 3}
