@@ -7,12 +7,16 @@ public class BaseItem : ScriptableObject
 {
 
     public string Name;
+
     [TextArea(2,3)]
     public string Description;
 
+    [TextArea(2,3)]
     public string FoundText;
 
     public Sprite sprite;
+
+    public string useText;
     public virtual void OnItemUse() {
         Debug.Log("Used item " + Name);
     }

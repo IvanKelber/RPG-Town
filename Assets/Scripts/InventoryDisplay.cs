@@ -15,22 +15,15 @@ public class InventoryDisplay : MonoBehaviour
 
 
     [SerializeField]
-    private Image itemImage;
-    [SerializeField]
-    TMP_Text itemName;
-    [SerializeField]
-    TMP_Text itemDescription;
-
-
-    [SerializeField]
     private GameObject itemSlotsParent;
 
     private ItemSlot[] inventorySlots;
-
+    private SelectedItem selectedItem;
 
     private void Awake() {
         cg = GetComponent<CanvasGroup>();
-        inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>();
+        inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>(); 
+        selectedItem = GetComponentInChildren<SelectedItem>();
         Debug.Log("Inventory slots: " + inventorySlots);
         inventory.Clear(); //While there is no saving of course
         OnToggleDisplay();
@@ -43,25 +36,12 @@ public class InventoryDisplay : MonoBehaviour
                 inventorySlots[i].AddItem(inventory.Get(i));
             }
         }
-        DisplaySelectedItem(null);
+        selectedItem.SetItem(null);
     }
-
-    public void DisplaySelectedItem(BaseItem item) {
-        if(item == null) {
-            itemName.text = "";
-            itemDescription.text = "";
-            itemImage.sprite = null;
-            return;
-        }
-        itemName.text = item.Name;
-        itemDescription.text = item.Description;
-        itemImage.sprite = item.sprite;
-    }
-
 
     public void OnToggleDisplay() {
         cg.alpha = displayAlpha;
         displayAlpha = (displayAlpha + 1) % 2;
-        DisplaySelectedItem(inventory.Get(0));
+        selectedItem.SetItem(inventory.Get(0));
     }
 }
