@@ -30,6 +30,7 @@ public class SelectedItem : MonoBehaviour
             itemName.text = "";
             itemDescription.text = "";
             itemImage.sprite = null;
+            itemImage.color = new Color(0,0,0,0);
             return;
         }
         useItemButton.interactable = true;
@@ -37,6 +38,7 @@ public class SelectedItem : MonoBehaviour
         itemName.text = item.Name;
         itemDescription.text = item.Description;
         itemImage.sprite = item.sprite;
+        itemImage.color = new Color(1,1,1,1);
     }
 
     public void OnItemUse() {

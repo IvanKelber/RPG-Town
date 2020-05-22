@@ -16,3 +16,4 @@ MonoBehaviour:
   Description: A cloth mask that has been moonlighting as a bed for a family of raccoons.
   FoundText: Hope those are food stains...
   sprite: {fileID: 21300000, guid: a66857dece5b44a52bdbd12ee08aeb9f, type: 3}
+  useText: Equip
