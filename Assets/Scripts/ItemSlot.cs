@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ScriptableObjectArchitecture;
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +11,9 @@ public class ItemSlot : MonoBehaviour
     private Button removeButton;
     [SerializeField]
     private ItemCollection inventory;
+
+    [SerializeField]
+    private BaseItemGameEvent itemSelected;
     BaseItem item;
 
     public void AddItem(BaseItem item) {
@@ -28,6 +32,10 @@ public class ItemSlot : MonoBehaviour
 
     public void OnRemoveButtonClicked() {
         inventory.Remove(item);
+    }
+
+    public void OnItemSelected() {
+        itemSelected.Raise(item);
     }
 
 }

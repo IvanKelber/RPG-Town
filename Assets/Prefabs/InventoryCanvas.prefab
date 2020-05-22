@@ -352,10 +352,11 @@ GameObject:
   - component: {fileID: 474756113590046634}
   - component: {fileID: 474756113590046631}
   - component: {fileID: 474756113590046630}
+  - component: {fileID: 474756113590046635}
   - component: {fileID: 474756113590046629}
   - component: {fileID: 474756113590046628}
-  - component: {fileID: 474756113590046635}
   - component: {fileID: 1307124543}
+  - component: {fileID: 8414012797638319955}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -401,7 +402,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -422,6 +423,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &474756113590046635
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474756113590046633}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &474756113590046629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +451,7 @@ MonoBehaviour:
   itemImage: {fileID: 474756113708156003}
   itemName: {fileID: 474756115672713081}
   itemDescription: {fileID: 474756114312079094}
+  itemSlotsParent: {fileID: 63650415077628233}
 --- !u!114 &474756113590046628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,18 +484,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!225 &474756113590046635
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474756113590046633}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &1307124543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 474756113590046629}
         m_TargetAssemblyTypeName: InventoryDisplay, Assembly-CSharp
-        m_MethodName: TEST
+        m_MethodName: UpdateUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -514,6 +516,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8414012797638319955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474756113590046633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0041e25f64064868a297e7a4380645a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 75c9c5adad53440e7a321070661c8f7a, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 474756113590046629}
+        m_TargetAssemblyTypeName: InventoryDisplay, Assembly-CSharp
+        m_MethodName: DisplaySelectedItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: {fileID: 0}
 --- !u!1 &474756113708156001
 GameObject:
   m_ObjectHideFlags: 0

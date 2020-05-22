@@ -36,11 +36,6 @@ public class InventoryDisplay : MonoBehaviour
         inventory.Clear(); //While there is no saving of course
     }
 
-  
-    private void Update() {
-        // DisplayItem(inventory.Count > 0 ? inventory[0] : null);
-    }
-
     public void UpdateUI() {
         for(int i = 0; i < inventorySlots.Length; i++) {
             inventorySlots[i].RemoveItem();
@@ -57,10 +52,6 @@ public class InventoryDisplay : MonoBehaviour
         itemName.text = item.Name;
         itemDescription.text = item.Description;
         itemImage.sprite = item.sprite;
-    }
-
-    public void TEST() {
-        Debug.Log("TEST");
     }
 
 
