@@ -30,10 +30,10 @@ public class InventoryDisplay : MonoBehaviour
 
     private void Awake() {
         cg = GetComponent<CanvasGroup>();
-        OnToggleDisplay();
         inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>();
         Debug.Log("Inventory slots: " + inventorySlots);
         inventory.Clear(); //While there is no saving of course
+        OnToggleDisplay();
     }
 
     public void UpdateUI() {
@@ -43,10 +43,14 @@ public class InventoryDisplay : MonoBehaviour
                 inventorySlots[i].AddItem(inventory.Get(i));
             }
         }
+        DisplaySelectedItem(null);
     }
 
     public void DisplaySelectedItem(BaseItem item) {
         if(item == null) {
+            itemName.text = "";
+            itemDescription.text = "";
+            itemImage.sprite = null;
             return;
         }
         itemName.text = item.Name;
@@ -58,5 +62,6 @@ public class InventoryDisplay : MonoBehaviour
     public void OnToggleDisplay() {
         cg.alpha = displayAlpha;
         displayAlpha = (displayAlpha + 1) % 2;
+        DisplaySelectedItem(inventory.Get(0));
     }
 }

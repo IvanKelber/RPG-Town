@@ -18,7 +18,7 @@ public class ItemGetInteractable : Interactable
     ItemCollection inventory;
 
     public override void OnInteraction() {
-        // inventory.Add(item);
+        inventory.Add(item);
         Destroy(this);
         startDialogueEvent.Raise(item.GetItemFoundDialogue());
         freezePlayerEvent.Raise(true);
