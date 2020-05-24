@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39abeb3db4244f998ef52a06e6a32b9, type: 3}
   m_Name: PlayerEquipment
   m_EditorClassIdentifier: 
-  itemEquipEvent: {fileID: 11400000, guid: d5b8a32dc605f4eed817efe60ce45146, type: 2}
+  equipmentChanged: {fileID: 11400000, guid: d5b8a32dc605f4eed817efe60ce45146, type: 2}
   inventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}

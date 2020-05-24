@@ -17,13 +17,10 @@ public class EquipmentSlot : MonoBehaviour
 
     public void AddItem(EquippableItem item) {
         if(item.slot == slot) {
-            Debug.Log("enabling itemslot");
             this.item = item;
             equipmentImage.sprite = item.sprite;
             equipmentImage.enabled = true;
         }
-        Debug.Log("failed to enable itemslot");
-
     }
 
     private void RemoveItem() {

@@ -44,13 +44,11 @@ public class DisplayEquipment : MonoBehaviour
     }
 
     public void UpdateUI() {
-        
-    }
-
-    public void Update() {
-        UpdateStats();
+        UpdatePlayerStats();
         UpdateEquipment();
     }
+
+
 
     public void UpdateEquipment() {
         foreach(var pair in equipment.EquipmentMap) {
@@ -60,7 +58,7 @@ public class DisplayEquipment : MonoBehaviour
         }
     }
 
-    public void UpdateStats() {
+    public void UpdatePlayerStats() {
         playerStrength.text = "Str: " + stats.Strength;
         playerAgility.text = "Agi: " + stats.Agility;
         playerDefense.text = "Def: " + stats.Defense;

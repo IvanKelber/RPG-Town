@@ -7,7 +7,7 @@ using ScriptableObjectArchitecture;
 public class Equipment : ScriptableObject
 {
 
-    public GameEvent itemEquipEvent;
+    public GameEvent equipmentChanged;
 
     public ItemCollection inventory;
 
@@ -27,16 +27,17 @@ public class Equipment : ScriptableObject
 
     public void Equip(EquipSlot slot, EquippableItem item) {
         inventory.Remove(item);
-        if(Unequip(slot)) {
+        if(_unequip(slot)) {
             _map.Add(slot, item);
             AddStatsFromItem(item);
+            equipmentChanged.Raise();
         } else {
             inventory.Add(item);
         }
     }
 
     // Returns whether or not the item was successfully unequiped
-    public bool Unequip(EquipSlot slot) {
+    public bool _unequip(EquipSlot slot) {
         EquippableItem preEquipped;
         if(_map.TryGetValue(slot, out preEquipped)) {
             bool removed = inventory.Add(preEquipped) && _map.Remove(slot); // won't unequip unless there's room in the inventory
@@ -45,15 +46,16 @@ public class Equipment : ScriptableObject
             }
             return removed;
         }
-        //The equipment slot wasn't filled
+        //There was nothing to unequip
         return true;
     }
 
-    public Dictionary<string, int> CalculateStatsFromEquipment() {       
-        foreach(EquippableItem item in _map.Values) {
-            AddStatsFromItem(item);
+    public bool Unequip(EquipSlot slot) {
+        bool unequipped = _unequip(slot);
+        if(unequipped) {
+            equipmentChanged.Raise();
         }
-        return statsMap;
+        return unequipped;
     }
 
     public void AddStatsFromItem(EquippableItem item) {
