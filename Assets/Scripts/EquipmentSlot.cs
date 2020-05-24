@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class EquipmentSlot : MonoBehaviour
 {
     [SerializeField]
@@ -25,14 +26,16 @@ public class EquipmentSlot : MonoBehaviour
 
     }
 
-    public void RemoveItem() {
+    private void RemoveItem() {
         this.item = null;
         equipmentImage.sprite = null;
         equipmentImage.enabled = false;
     }
 
     public void OnUnequipClicked() {
-        equipment.Unequip(slot);
+        if(equipment.Unequip(slot)) {
+            RemoveItem();
+        }
     }
 
 }
