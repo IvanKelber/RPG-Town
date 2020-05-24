@@ -26,17 +26,20 @@ public class DisplayEquipment : MonoBehaviour
     [SerializeField]
     private TMP_Text playerLck;
 
-    // [SerializeField]
-    // private GameObject itemSlotsParent;
+    [SerializeField]
+    private GameObject equipmentSlotsParent;
 
-    // private ItemSlot[] inventorySlots;
+    private EquipmentSlot[] equipmentSlots;
+
+    private Dictionary<EquipSlot, EquipmentSlot> slotMap;
 
     private void Awake() {
         cg = GetComponent<CanvasGroup>();
-        // inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>(); 
-        // selectedItem = GetComponentInChildren<SelectedItem>();
-        // Debug.Log("Inventory slots: " + inventorySlots);
-        // inventory.Clear(); //While there is no saving of course
+        equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<EquipmentSlot>(); 
+        slotMap = new Dictionary<EquipSlot, EquipmentSlot>();
+        foreach(EquipmentSlot equipmentSlot in equipmentSlots) {
+            slotMap.Add(equipmentSlot.slot, equipmentSlot);
+        }
         OnToggleDisplay();
     }
 
@@ -46,6 +49,15 @@ public class DisplayEquipment : MonoBehaviour
 
     public void Update() {
         UpdateStats();
+        UpdateEquipment();
+    }
+
+    public void UpdateEquipment() {
+        foreach(var pair in equipment.EquipmentMap) {
+            EquipSlot slot = pair.Key;
+            EquippableItem item = pair.Value;
+            slotMap[slot].AddItem(item);
+        }
     }
 
     public void UpdateStats() {

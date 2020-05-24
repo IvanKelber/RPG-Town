@@ -13,6 +13,7 @@ public class Equipment : ScriptableObject
 
     private Dictionary<EquipSlot, EquippableItem> _map = new Dictionary<EquipSlot, EquippableItem>();
 
+    public Dictionary<EquipSlot, EquippableItem> EquipmentMap {get {return _map;} private set {_map = value;}}
     public Dictionary<string, int> statsMap = new Dictionary<string, int>();
 
     private void OnEnable() {
