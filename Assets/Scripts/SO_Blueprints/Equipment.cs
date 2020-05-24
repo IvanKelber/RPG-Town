@@ -25,20 +25,24 @@ public class Equipment : ScriptableObject
     }
 
     public void Equip(EquipSlot slot, EquippableItem item) {
-        if(_unequip(slot)) {
+        inventory.Remove(item);
+        if(Unequip(slot)) {
             _map.Add(slot, item);
             AddStatsFromItem(item);
+        } else {
+            inventory.Add(item);
         }
     }
 
     // Returns whether or not the item was successfully unequiped
-    private bool _unequip(EquipSlot slot) {
+    public bool Unequip(EquipSlot slot) {
         EquippableItem preEquipped;
         if(_map.TryGetValue(slot, out preEquipped)) {
             bool removed = inventory.Add(preEquipped) && _map.Remove(slot); // won't unequip unless there's room in the inventory
             if(removed) {
                 RemoveStatsFromItem(preEquipped);
             }
+            return removed;
         }
         //The equipment slot wasn't filled
         return true;
