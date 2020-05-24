@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a635c823e824f461cbad356cad694728, type: 3}
   m_Name: PlayerPrimaryStats
   m_EditorClassIdentifier: 
-  Strength: 0
-  Agility: 0
-  Defense: 0
-  Wisdom: 0
-  Constitution: 0
-  Luck: 0
+  Strength: 10
+  Agility: 10
+  Defense: 10
+  Wisdom: 10
+  Constitution: 10
+  Luck: 10

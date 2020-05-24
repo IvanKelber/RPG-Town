@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229b6eb95ef684b528c5e3669fb01dd2, type: 3}
   m_Name: PlayerDerivedStats
   m_EditorClassIdentifier: 
-  primaryStats: {fileID: 0}
-  Health: 0
-  Mana: 0
+  primaryStats: {fileID: 11400000, guid: ff7d7e34ecbf0494abb3bfdd8ddd9191, type: 2}
+  equipment: {fileID: 11400000, guid: 61d1aa3a2a6a34fd78166eae33359716, type: 2}

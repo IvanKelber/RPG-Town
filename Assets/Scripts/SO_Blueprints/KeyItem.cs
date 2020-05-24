@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
  
-[CreateAssetMenu(fileName = "Data", menuName = "InventoryItems/KeyItem", order = 1)]
+[CreateAssetMenu(fileName = "KeyItem", menuName = "InventoryItems/KeyItem", order = 1)]
 public class KeyItem : BaseItem
 {
     public override void OnItemUse() {

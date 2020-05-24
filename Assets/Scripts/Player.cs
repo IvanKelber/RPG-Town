@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private ItemCollection inventory;
 
+    public DerivedStats stats;
+
 
     [SerializeField]
     private float walkSpeed = 3;
@@ -61,6 +63,15 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R)) {
             inventory.Add(mask2);
+        }
+
+        if(Input.GetKeyDown(KeyCode.G)) {
+            Debug.Log("Player Strength = " + stats.Strength);
+            Debug.Log("Player Agility = " + stats.Agility);
+            Debug.Log("Player Wisdom = " + stats.Wisdom);
+            Debug.Log("Player Constitution = " + stats.Constitution);
+            Debug.Log("Player Defense = " + stats.Defense);
+            Debug.Log("Player Luck = " + stats.Luck);
         }
     }
 

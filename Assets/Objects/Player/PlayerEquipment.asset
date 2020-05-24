@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cf2fe1e23cf4c9d8e51c2c252476bd, type: 3}
-  m_Name: PlayerVitals
+  m_Script: {fileID: 11500000, guid: a39abeb3db4244f998ef52a06e6a32b9, type: 3}
+  m_Name: PlayerEquipment
   m_EditorClassIdentifier: 
-  derivedStats: {fileID: 11400000, guid: 1b11008cde6a640dcb51e61cd7229816, type: 2}
-  _health: 100
+  itemEquipEvent: {fileID: 11400000, guid: d5b8a32dc605f4eed817efe60ce45146, type: 2}
+  inventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}
