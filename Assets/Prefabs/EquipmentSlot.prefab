@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6360416619829032710, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
       propertyPath: m_Name
-      value: ItemSlot (1)
+      value: EquipmentSlot
       objectReference: {fileID: 0}
     - target: {fileID: 6982153662555921683, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -153,8 +153,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8684148835584792518, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000022888184
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6068445698515280396, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
+    - {fileID: 1047658144, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0937267a612148e09db31d8dbad29f1, type: 3}
