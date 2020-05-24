@@ -34,16 +34,17 @@ public class CameraFollow : MonoBehaviour
 
     float cameraWidth;
     float cameraHeight;
+    private Camera cam;
     private void Start()
     {
         focusArea = new FocusArea(target.collider.bounds, focusAreaSize);
-        Camera cam = GetComponent<Camera>();
-        cameraHeight = 2f * cam.orthographicSize;
-        cameraWidth = cameraHeight * cam.aspect;
+        cam = GetComponent<Camera>();
     }
 
     private void LateUpdate()
     {
+        cameraHeight = 2f * cam.orthographicSize;
+        cameraWidth = cameraHeight * cam.aspect;
         focusArea.Update(target.collider.bounds);
         Vector2 focusPosition = focusArea.center;
 

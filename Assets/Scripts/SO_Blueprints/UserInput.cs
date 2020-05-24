@@ -7,9 +7,14 @@ using System;
 public class UserInput : ScriptableObject
 {
 
-    const KeyCode actionKey = KeyCode.Space;
-    const KeyCode runKey = KeyCode.LeftShift;
-    const KeyCode inventoryKey = KeyCode.B;
+    [SerializeField]
+    private KeyCode actionKey;
+    [SerializeField]
+    private KeyCode runKey;
+    [SerializeField]
+    private KeyCode inventoryKey;
+    [SerializeField]
+    private KeyCode equipmentKey;
 
     public Vector2 DirectionalInput() {
         return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -25,6 +30,10 @@ public class UserInput : ScriptableObject
 
     public bool InventoryKey() {
         return Input.GetKeyDown(inventoryKey);
+    }
+
+    public bool EquipmentKey() {
+        return Input.GetKeyDown(equipmentKey);
     }
 
 

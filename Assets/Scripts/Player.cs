@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameEvent toggleInventoryEvent;
-
+    [SerializeField]
+    private GameEvent toggleEquipmentEvent;
     private bool playerActionFrozen = false;
 
     private Animator animator;
@@ -55,6 +56,10 @@ public class Player : MonoBehaviour
 
         if(playerInput.InventoryKey()) {
             toggleInventoryEvent.Raise();
+        }
+
+        if(playerInput.EquipmentKey()) {
+            toggleEquipmentEvent.Raise();
         }
 
         if(Input.GetKeyDown(KeyCode.T)) {

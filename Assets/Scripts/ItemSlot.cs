@@ -9,8 +9,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private Image itemImage;    
-    [SerializeField]
-    private Button removeButton;
+
     [SerializeField]
     private ItemCollection inventory;
 
@@ -30,14 +29,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         this.item = item;
         itemImage.sprite = item.sprite;
         itemImage.enabled = true;
-        removeButton.interactable = true;
     }
 
     public void RemoveItem() {
         this.item = null;
         itemImage.sprite = null;
         itemImage.enabled = false;
-        removeButton.interactable = false;
     }
 
     public void OnRemoveButtonClicked() {
