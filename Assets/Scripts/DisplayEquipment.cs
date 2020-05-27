@@ -25,6 +25,10 @@ public class DisplayEquipment : MonoBehaviour
     private TMP_Text playerWisdom;
     [SerializeField]
     private TMP_Text playerLck;
+    [SerializeField]
+    private TMP_Text playerHP;
+    [SerializeField]
+    private TMP_Text playerMP;
 
     [SerializeField]
     private GameObject equipmentSlotsParent;
@@ -41,6 +45,7 @@ public class DisplayEquipment : MonoBehaviour
             slotMap.Add(equipmentSlot.slot, equipmentSlot);
         }
         OnToggleDisplay();
+        UpdateUI();
     }
 
     public void UpdateUI() {
@@ -65,6 +70,8 @@ public class DisplayEquipment : MonoBehaviour
         playerConstitution.text = "Con: " + stats.Constitution;
         playerWisdom.text = "Wis: " + stats.Wisdom;
         playerLck.text = "Lck: " + stats.Luck;
+        playerHP.text = "HP: " + stats.MaxHealth;
+        playerMP.text = "MP: " + stats.MaxMana;
     }
 
     public void OnToggleDisplay() {

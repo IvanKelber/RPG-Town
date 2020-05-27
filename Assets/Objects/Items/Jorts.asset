@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670213ea2d82244c1bd959353072563e, type: 3}
+  m_Name: Jorts
+  m_EditorClassIdentifier: 
+  Name: Pair of Jorts
+  Description: A pair of blue jean cutoffs with a broken zipper.
+  FoundText: The name Tobias is inscribed inside the waistline.
+  sprite: {fileID: 21300000, guid: 1e8dbbb8056b6491c8c777984c18fa1a, type: 3}
+  useText: Equip
+  stats: {fileID: 11400000, guid: 3fdb74b2b55734c2abaa851dc04d6b0d, type: 2}
+  slot: {fileID: 11400000, guid: 0dc950b0e61984c29a3172c799cea673, type: 2}
+  equipment: {fileID: 11400000, guid: 61d1aa3a2a6a34fd78166eae33359716, type: 2}
