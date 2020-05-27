@@ -21,6 +21,11 @@ public class SelectedItem : MonoBehaviour
     [SerializeField]
     Image itemImage;
 
+    [SerializeField]
+    ItemCollection inventory;
+
+    [SerializeField]
+    Button deleteButton;
 
     public void SetItem(BaseItem item) {
         this.item = item;
@@ -31,6 +36,7 @@ public class SelectedItem : MonoBehaviour
             itemDescription.text = "";
             itemImage.sprite = null;
             itemImage.color = new Color(0,0,0,0);
+            deleteButton.interactable = false;
             return;
         }
         useItemButton.interactable = true;
@@ -39,11 +45,18 @@ public class SelectedItem : MonoBehaviour
         itemDescription.text = item.Description;
         itemImage.sprite = item.sprite;
         itemImage.color = new Color(1,1,1,1);
+        deleteButton.interactable = true;
     }
 
     public void OnItemUse() {
         if(item) {
             item.OnItemUse();
+        }
+    }
+
+    public void DeleteItem() {
+        if(item) {
+            inventory.Remove(item);
         }
     }
 
