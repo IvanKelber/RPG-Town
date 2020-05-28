@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Orange Hat
   Description: It's orange.
   FoundText: Literally an orange.
-  sprite: {fileID: 21300000, guid: c97d40e01391648da9bb413429e7cb55, type: 3}
+  sprite: {fileID: 21300000, guid: 272a911c1ac0e4c7ba0e7b6c3d85f5c1, type: 3}
   useText: Equip
   stats: {fileID: 11400000, guid: c15e0271ce48a4756a807e722dc5c74c, type: 2}
   slot: {fileID: 11400000, guid: 9a0213a90adef43578eea98dcb955daa, type: 2}

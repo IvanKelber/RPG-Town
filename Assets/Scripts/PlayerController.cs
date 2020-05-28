@@ -9,6 +9,9 @@ public class PlayerController : RaycastController
 
     [SerializeField]
     private LayerMask interactableMask;
+
+    [SerializeField]
+    private LayerMask foregroundMask;
     public void Move(Vector2 moveAmount)
     {
         UpdateRaycastOrigins();
@@ -27,14 +30,6 @@ public class PlayerController : RaycastController
         } else if (directionY != 0 ) {
             facingDirection = Vector2.up * directionY;
         } 
-        Color rayColor = Color.red;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, 1, interactableMask);
-
-        if(hit) {
-            rayColor = Color.green;
-        }
-        Debug.DrawRay(transform.position, facingDirection * 1, rayColor);
-
     }
 
      void HorizontalCollisions(ref Vector2 moveAmount)
@@ -86,13 +81,19 @@ public class PlayerController : RaycastController
     }
 
     public Interactable CheckForInteractables() {
-        Debug.Log("Checking for interactables");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, 1, interactableMask);
 
         if(hit) {
             return hit.transform.gameObject.GetComponent<Interactable>();
         }
-        Debug.Log("Nothing found");
         return null;
+    }
+
+    public void CheckForForeground() {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, .1f, foregroundMask);
+        if(hit) {
+            Foreground fg = hit.collider.gameObject.GetComponent<Foreground>() as Foreground;
+            fg.FadeOpacity();
+        }
     }
 }

@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        controller.CheckForForeground();
         if(!playerActionFrozen) {
             Vector2 moveAmount = GetMovement(Time.deltaTime);
             controller.Move(moveAmount);
@@ -62,6 +63,8 @@ public class Player : MonoBehaviour
             toggleEquipmentEvent.Raise();
         }
 
+
+        //Test code
         if(Input.GetKeyDown(KeyCode.T)) {
             inventory.Add(mask);
         }
@@ -69,15 +72,8 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)) {
             inventory.Add(mask2);
         }
+        // end test code
 
-        if(Input.GetKeyDown(KeyCode.G)) {
-            Debug.Log("Player Strength = " + stats.Strength);
-            Debug.Log("Player Agility = " + stats.Agility);
-            Debug.Log("Player Wisdom = " + stats.Wisdom);
-            Debug.Log("Player Constitution = " + stats.Constitution);
-            Debug.Log("Player Defense = " + stats.Defense);
-            Debug.Log("Player Luck = " + stats.Luck);
-        }
     }
 
     private void Interact() {
