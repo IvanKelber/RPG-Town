@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 using ScriptableObjectArchitecture;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
@@ -35,14 +35,29 @@ public class Player : MonoBehaviour
 
     public BaseItem mask;
     public BaseItem mask2;
+
+    public SceneInfo playerScene;
     void Awake()
     {
+        LoadSceneState();
         controller = GetComponent<PlayerController>();
         if(controller == null) {
             Debug.LogError("Player controller is missing");
         }
 
         animator = GetComponent<Animator>();
+    }
+
+    void OnDestroy() {
+        SaveSceneState();
+    }
+
+    void LoadSceneState() {
+        this.transform.position = playerScene.GetPlayerPosition();
+    }
+
+    void SaveSceneState() {
+        playerScene.SetPlayerPosition(this.transform.position);
     }
 
     void Update()
@@ -71,6 +86,10 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R)) {
             inventory.Add(mask2);
+        }
+
+        if(Input.GetKeyDown(KeyCode.U)) {
+            SceneManager.LoadScene(2);
         }
         // end test code
 
@@ -119,4 +138,5 @@ public class Player : MonoBehaviour
         yield return null;
         playerActionFrozen = false;
     }
+
 }

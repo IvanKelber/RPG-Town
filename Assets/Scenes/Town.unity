@@ -12382,6 +12382,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 474756115672713080, guid: a008f03b4678a4368b973295d7b93366, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.1999817
+      objectReference: {fileID: 0}
     - target: {fileID: 683474648849751402, guid: a008f03b4678a4368b973295d7b93366, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -14596,6 +14600,10 @@ PrefabInstance:
       propertyPath: mask
       value: 
       objectReference: {fileID: 11400000, guid: ff67ea98bc51a434592741f697cb7554, type: 2}
+    - target: {fileID: 4055526818313023047, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
+      propertyPath: playerScene
+      value: 
+      objectReference: {fileID: 11400000, guid: d9ec02d85273247a78334e44953d6bf5, type: 2}
     - target: {fileID: 4055526818313023048, guid: dcaa3520aa39740e1bbf4998cfd0d4da, type: 3}
       propertyPath: m_Name
       value: Player

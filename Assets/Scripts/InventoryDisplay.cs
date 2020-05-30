@@ -24,8 +24,6 @@ public class InventoryDisplay : MonoBehaviour
         cg = GetComponent<CanvasGroup>();
         inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>(); 
         selectedItem = GetComponentInChildren<SelectedItem>();
-        Debug.Log("Inventory slots: " + inventorySlots);
-        inventory.Clear(); //While there is no saving of course
         OnToggleDisplay();
     }
 
