@@ -40,27 +40,23 @@ public class Equipment : ScriptableObject
         DeserializeEquipment();
     }
 
-    private void OnDestroy() {
-        SerializeEquipment();
-    }
-
-    private void SerializeEquipment() {
+    public void SerializeEquipment() {
+        serializedEquipment.Clear();
         foreach(var pair in _map) {
             serializedEquipment.Add(new SerializedEquipment(pair));
         }
     }
 
-    private void DeserializeEquipment() {
+    public void DeserializeEquipment() {
         foreach(SerializedEquipment equipment in serializedEquipment) {
-            _map.Add(equipment.slot, equipment.item);
+            _equip(equipment.slot, equipment.item);
         }
     }
 
     public void Equip(EquipSlot slot, EquippableItem item) {
         inventory.Remove(item);
         if(_unequip(slot)) {
-            _map.Add(slot, item);
-            AddStatsFromItem(item);
+            _equip(slot, item);
             equipmentChanged.Raise();
         } else {
             inventory.Add(item);
@@ -68,7 +64,7 @@ public class Equipment : ScriptableObject
     }
 
     // Returns whether or not the item was successfully unequiped
-    public bool _unequip(EquipSlot slot) {
+    private bool _unequip(EquipSlot slot) {
         EquippableItem preEquipped;
         if(_map.TryGetValue(slot, out preEquipped)) {
             bool removed = inventory.Add(preEquipped) && _map.Remove(slot); // won't unequip unless there's room in the inventory
@@ -79,6 +75,11 @@ public class Equipment : ScriptableObject
         }
         //There was nothing to unequip
         return true;
+    }
+
+    private void _equip(EquipSlot slot, EquippableItem item) {
+        _map.Add(slot, item);
+        AddStatsFromItem(item);
     }
 
     public bool Unequip(EquipSlot slot) {

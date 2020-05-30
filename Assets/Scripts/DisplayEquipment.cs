@@ -48,6 +48,10 @@ public class DisplayEquipment : MonoBehaviour
         UpdateUI();
     }
 
+    private void OnDestroy() {
+        equipment.SerializeEquipment();
+    }
+
     public void UpdateUI() {
         Debug.Log("updating equipment UI");
         Debug.Log("equipment size: " + equipment.EquipmentMap.Count);
