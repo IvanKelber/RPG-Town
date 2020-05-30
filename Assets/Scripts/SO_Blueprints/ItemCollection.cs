@@ -19,6 +19,13 @@ public class ItemCollection : ScriptableObject
 
     private List<BaseItem> items;
 
+    private void OnEnable() {
+        Debug.Log("enabling inventory");
+        if(items == null) {
+            items = new List<BaseItem>();
+        }
+    }
+
     public bool Add(BaseItem item) {
         Debug.Log("attempting to add" + item.Name);
         Debug.Log(this.Count + "::" + capacity);

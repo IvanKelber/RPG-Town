@@ -10,7 +10,7 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField]
     ItemCollection inventory;
 
-    private int displayAlpha = 0;
+    private bool displayOn;
     private CanvasGroup cg;
 
 
@@ -24,7 +24,18 @@ public class InventoryDisplay : MonoBehaviour
         cg = GetComponent<CanvasGroup>();
         inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>(); 
         selectedItem = GetComponentInChildren<SelectedItem>();
-        OnToggleDisplay();
+    }
+
+    private void Start() {
+        UpdateUI();
+        displayOn = ToggleDisplay(false); //Default to off
+        Debug.Log("setting inventory invisible");
+
+    }
+
+    private void OnDestroy() {
+        displayOn = ToggleDisplay(false); //Ensure it's off when destroyed
+        Debug.Log("setting inventory invisible on destroy");
     }
 
     public void UpdateUI() {
@@ -37,9 +48,17 @@ public class InventoryDisplay : MonoBehaviour
         selectedItem.SetItem(null);
     }
 
+    private bool ToggleDisplay(bool turnOn){
+        if(turnOn) {
+            cg.alpha = 1;
+        } else {
+            cg.alpha = 0;
+        }
+        return !turnOn;
+    }
+
     public void OnToggleDisplay() {
-        cg.alpha = displayAlpha;
-        displayAlpha = (displayAlpha + 1) % 2;
+        displayOn = ToggleDisplay(displayOn);
         selectedItem.SetItem(inventory.Get(0));
     }
 }

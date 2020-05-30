@@ -49,6 +49,8 @@ public class DisplayEquipment : MonoBehaviour
     }
 
     public void UpdateUI() {
+        Debug.Log("updating equipment UI");
+        Debug.Log("equipment size: " + equipment.EquipmentMap.Count);
         UpdatePlayerStats();
         UpdateEquipment();
     }

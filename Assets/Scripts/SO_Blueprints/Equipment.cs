@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
@@ -11,18 +12,48 @@ public class Equipment : ScriptableObject
 
     public ItemCollection inventory;
 
-    private Dictionary<EquipSlot, EquippableItem> _map = new Dictionary<EquipSlot, EquippableItem>();
+    private Dictionary<EquipSlot, EquippableItem> _map;
 
     public Dictionary<EquipSlot, EquippableItem> EquipmentMap {get {return _map;} private set {_map = value;}}
-    public Dictionary<string, int> statsMap = new Dictionary<string, int>();
+    public Dictionary<string, int> statsMap;
+
+    private List<SerializedEquipment> serializedEquipment;
 
     private void OnEnable() {
-        statsMap.Add("Strength", 0);
-        statsMap.Add("Agility", 0);
-        statsMap.Add("Constitution", 0);
-        statsMap.Add("Wisdom", 0);
-        statsMap.Add("Defense", 0);
-        statsMap.Add("Luck", 0);     
+
+        if(_map == null) {
+            _map = new Dictionary<EquipSlot, EquippableItem>();
+        }
+        if(serializedEquipment == null) {
+            serializedEquipment = new List<SerializedEquipment>();
+        }
+        if(statsMap == null) {
+            statsMap = new Dictionary<string, int>();
+            statsMap.Add("Strength", 0);
+            statsMap.Add("Agility", 0);
+            statsMap.Add("Constitution", 0);
+            statsMap.Add("Wisdom", 0);
+            statsMap.Add("Defense", 0);
+            statsMap.Add("Luck", 0);
+
+        }
+        DeserializeEquipment();
+    }
+
+    private void OnDestroy() {
+        SerializeEquipment();
+    }
+
+    private void SerializeEquipment() {
+        foreach(var pair in _map) {
+            serializedEquipment.Add(new SerializedEquipment(pair));
+        }
+    }
+
+    private void DeserializeEquipment() {
+        foreach(SerializedEquipment equipment in serializedEquipment) {
+            _map.Add(equipment.slot, equipment.item);
+        }
     }
 
     public void Equip(EquipSlot slot, EquippableItem item) {
@@ -76,5 +107,15 @@ public class Equipment : ScriptableObject
         statsMap["Luck"] -= item.stats.Luck;   
     }
 
+    [Serializable]
+    struct SerializedEquipment {
+        public EquipSlot slot;
+        public EquippableItem item;
+
+        public SerializedEquipment (KeyValuePair<EquipSlot, EquippableItem> pair) {
+            this.slot = pair.Key;
+            this.item = pair.Value;
+        }
+    }
 
 }
