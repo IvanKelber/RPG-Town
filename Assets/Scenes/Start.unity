@@ -649,11 +649,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953481103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d679bcf71754d4e81d728e1d071b9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 717f717bf3956433d80dd09f67a37000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenes: []
+  playerInventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}
+  playerEquipment: {fileID: 11400000, guid: 61d1aa3a2a6a34fd78166eae33359716, type: 2}
+  playerBaseStats: {fileID: 11400000, guid: ff7d7e34ecbf0494abb3bfdd8ddd9191, type: 2}
   townLoader: {fileID: 11400000, guid: e3d73f4f858d247129e5cb4bf061bb7e, type: 2}
-  inventory: {fileID: 11400000, guid: 8aa2256db9b3447be9abc907f94a5902, type: 2}
 --- !u!114 &1953481106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,8 +701,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1953481105}
-        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
-        m_MethodName: OnStartClicked
+        m_TargetAssemblyTypeName: Startup, Assembly-CSharp
+        m_MethodName: NewStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

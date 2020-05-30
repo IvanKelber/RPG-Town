@@ -7,12 +7,19 @@ public class SceneInfo : ScriptableObject
 {
     private Vector3 playerPosition;
 
+    [SerializeField]
+    private Vector3 defaultPlayerPosition;
+
     public void SetPlayerPosition(Vector3 position) {
         playerPosition = position;
     }
 
     public Vector3 GetPlayerPosition() {
         return playerPosition;
+    }
+
+    public void SetToDefault() {
+        playerPosition = defaultPlayerPosition;
     }
 
 }

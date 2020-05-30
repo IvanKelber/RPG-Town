@@ -28,14 +28,7 @@ public class Equipment : ScriptableObject
             serializedEquipment = new List<SerializedEquipment>();
         }
         if(statsMap == null) {
-            statsMap = new Dictionary<string, int>();
-            statsMap.Add("Strength", 0);
-            statsMap.Add("Agility", 0);
-            statsMap.Add("Constitution", 0);
-            statsMap.Add("Wisdom", 0);
-            statsMap.Add("Defense", 0);
-            statsMap.Add("Luck", 0);
-
+            ClearStatsMap();
         }
         DeserializeEquipment();
     }
@@ -106,6 +99,22 @@ public class Equipment : ScriptableObject
         statsMap["Wisdom"] -= item.stats.Wisdom;
         statsMap["Defense"] -= item.stats.Defense;
         statsMap["Luck"] -= item.stats.Luck;   
+    }
+
+    public void Clear() {
+        _map.Clear();
+        serializedEquipment.Clear();
+        ClearStatsMap();
+    }
+
+    private void ClearStatsMap() {
+        statsMap = new Dictionary<string, int>();
+        statsMap.Add("Strength", 0);
+        statsMap.Add("Agility", 0);
+        statsMap.Add("Constitution", 0);
+        statsMap.Add("Wisdom", 0);
+        statsMap.Add("Defense", 0);
+        statsMap.Add("Luck", 0);
     }
 
     [Serializable]
