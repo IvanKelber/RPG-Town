@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c25aada21134baf80f1a0799d39aa1, type: 3}
   m_Name: TownSceneInfo
   m_EditorClassIdentifier: 
-  defaultPlayerPosition: {x: 0, y: 0, z: 0}
+  defaultPlayerPosition: {x: -5.72199, y: -4.9335, z: 0}
